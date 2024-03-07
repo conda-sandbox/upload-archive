@@ -45,6 +45,8 @@ jobs:
           > "release/${{ env.ARCHIVE_NAME }}.tar.gz.sha256sum"
 
       - name: Upload Archive
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: gh release upload
           --clobber "${{ github.ref_name }}"
           --repo "${{ github.repository }}"
